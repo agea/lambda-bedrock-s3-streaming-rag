@@ -44,7 +44,7 @@ With this pattern we want to showcase how to implement a streaming serverless Re
 Customers asked for a way to quickly test RAG capabilities on a small number of documents without managing infrastructure for contextual knowledge and non-parametric memory.  
 In this pattern, we run a RAG workflow in a single Lambda function, so that customers only pay for the infrastructure they use, when they use it.  
 We use [LanceDB](https://lancedb.com/) with Amazon S3 as backend for embedding storage.  
-This pattern deploys one Lambda function behind an API Gateway and an S3 Bucket where to store your embeddings.  
+This pattern deploys one Lambda function and an S3 Bucket where to store your embeddings.  
 This pattern makes use of Bedrock to calculate embeddings with Amazon Titan Embedding and any Amazon Bedrock chat model as prediction LLM. 
 The responses are streamed using Lambda URL function streaming for a quicker time to first byte and a better user experience.
 We also provide a local pipeline to ingest your PDFs and upload them to S3.
