@@ -18,6 +18,11 @@ Resources:
 
   DocumentBucket:
     Type: 'AWS::S3::Bucket'
+    Properties: 
+      BucketEncryption: 
+        ServerSideEncryptionConfiguration: 
+        - ServerSideEncryptionByDefault:
+            SSEAlgorithm: AES256
 
   StreamingRAGFunction:
     Type: AWS::Serverless::Function
@@ -55,10 +60,11 @@ Resources:
       Policies:
         - Statement:
             - Effect: Allow
-              Action: 
+              Action:
                 - 'bedrock:InvokeModel'
                 - 'bedrock:InvokeModelWithResponseStream'
-              Resource: '*'
+              Resource: !Sub 'arn:aws:bedrock:${AWS::Region}::foundation-model/anthropic.claude-*'
+              Resource: !Sub 'arn:aws:bedrock:${AWS::Region}::foundation-model/amazon.titan-*'
             - Effect: Allow
               Action: s3:GetObject
               Resource: !Sub arn:aws:s3:::${DocumentBucket}/*

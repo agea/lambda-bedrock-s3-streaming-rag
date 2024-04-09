@@ -48,6 +48,7 @@ This pattern deploys one Lambda function behind an API Gateway and an S3 Bucket 
 This pattern makes use of Bedrock to calculate embeddings with Amazon Titan Embedding and any Amazon Bedrock chat model as prediction LLM. 
 The responses are streamed using Lambda URL function streaming for a quicker time to first byte and a better user experience.
 We also provide a local pipeline to ingest your PDFs and upload them to S3.
+The permissions defined in [template.yaml](./template.yaml) restrict model access to just the titan and claude models, but you can update this to use other models as you wish.
 
 ![Full architecture](./assets/full-architecture.png)
 
