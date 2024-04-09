@@ -57,9 +57,9 @@ You will need to ensure you have your AWS credentials as environment variables i
 # AWS_SESSION_TOKEN
 # AWS_REGION
 export STACK_NAME=<your-stack-name>  # find it in ./samconfig.toml
-LAMBDA_ENDPOINT_URL=$(aws cloudformation describe-stacks --stack-name $STACK_NAME --query 'Stacks[0].Outputs[?OutputKey==`StreamingRAGFunctionURL`].OutputValue' --output text)
+export LAMBDA_ENDPOINT_URL=$(aws cloudformation describe-stacks --stack-name $STACK_NAME --query 'Stacks[0].Outputs[?OutputKey==`StreamingRAGFunctionURL`].OutputValue' --output text)
 
-cd react
+cd testing/react
 npm install
 npm run start
 # A UI will open at localhost:3000 that you can then ask questions to.

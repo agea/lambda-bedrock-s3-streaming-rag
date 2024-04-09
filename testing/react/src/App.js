@@ -29,8 +29,11 @@ export default function App() {
     setSearchQuery(query);
     let body = JSON.stringify({
       query: query,
-      // Can use any Bedrock available models
       model: "anthropic.claude-instant-v1",
+      // Other model examples that you can use.
+      // model: "anthropic.claude-3-haiku-20240307-v1:0",
+      // model: "anthropic.claude-3-sonnet-20240229-v1:0",
+      // model: "mistral.mistral-large-2402-v1:0",
     });
     
     let signed = await sigv4.sign({

@@ -63,8 +63,10 @@ Resources:
               Action:
                 - 'bedrock:InvokeModel'
                 - 'bedrock:InvokeModelWithResponseStream'
-              Resource: !Sub 'arn:aws:bedrock:${AWS::Region}::foundation-model/anthropic.claude-*'
-              Resource: !Sub 'arn:aws:bedrock:${AWS::Region}::foundation-model/amazon.titan-*'
+              Resource:  
+                - !Sub 'arn:aws:bedrock:${AWS::Region}::foundation-model/anthropic.claude-*'
+                - !Sub 'arn:aws:bedrock:${AWS::Region}::foundation-model/amazon.titan-*'
+                - !Sub 'arn:aws:bedrock:${AWS::Region}::foundation-model/mistral.mixtral-*'
             - Effect: Allow
               Action: s3:GetObject
               Resource: !Sub arn:aws:s3:::${DocumentBucket}/*

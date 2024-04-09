@@ -235,3 +235,4 @@ terraform.rc
 *.iml
 *.idea%  
 embeddings/
+docs/
