@@ -236,3 +236,4 @@ terraform.rc
 *.idea%  
 embeddings/
 docs/
+data-pipeline/.venv/

@@ -11,7 +11,7 @@ from langchain.document_loaders import PyPDFDirectoryLoader
 import lancedb as ldb
 import pyarrow as pa
 
-embeddings = BedrockEmbeddings()
+embeddings = BedrockEmbeddings(model_id="amazon.titan-embed-text-v2:0")
 
 # we split the data into chunks of 1,000 characters, with an overlap
 # of 200 characters between the chunks, which helps to give better results
@@ -22,7 +22,7 @@ db = ldb.connect('/tmp/embeddings')
 
 schema = pa.schema(
   [
-      pa.field("vector", pa.list_(pa.float32(), 1536)), # document vector with 1.5k dimensions (TitanEmbedding)
+      pa.field("vector", pa.list_(pa.float32(), 1024)), # document vector with 1.5k dimensions (TitanEmbedding)
       pa.field("text", pa.string()), # langchain requires it
       pa.field("id", pa.string()) # langchain requires it
   ])
